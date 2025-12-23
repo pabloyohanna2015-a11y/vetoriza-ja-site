@@ -1,0 +1,6 @@
+# Permite que todos os robôs de busca (Google, Bing, etc.) acessem o site
+User-agent: *
+Allow: /
+
+# Indica o caminho oficial do seu mapa do site para o Google
+Sitemap: https://vetorizaja.netlify.app/sitemap.xml
