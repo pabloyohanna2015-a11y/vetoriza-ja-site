@@ -11,9 +11,9 @@
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="VetorizaJá.png">
 
-    <!-- Bibliotecas Externas (Motor de Vetorização) -->
+    <!-- Bibliotecas Externas (Motor de Vetorização - Link Estabilizado) -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/imagetracerjs/1.2.6/imagetracer_v1.2.6.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/imagetracerjs@1.2.6/imagetracer_v1.2.6.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
     
     <!-- Google Analytics (GA4) -->
@@ -174,25 +174,22 @@
         }
 
         function liberarVetor() {
-            // Feedback visual de carregamento
+            // Verifica se o motor carregou antes de tentar usar
+            if (typeof ImageTracer === 'undefined') {
+                alert("O motor de vetorização ainda está carregando. Por favor, aguarde 5 segundos e tente novamente.");
+                return;
+            }
+
             btnConfirmar.innerText = "Processando Vetor...";
             btnConfirmar.disabled = true;
             btnConfirmar.classList.add('opacity-50', 'cursor-not-allowed');
 
-            // Pequeno atraso para garantir que o navegador processe o clique
             setTimeout(() => {
                 try {
-                    // Verifica se a biblioteca carregou
-                    if (typeof ImageTracer === 'undefined') {
-                        throw new Error("Motor de vetorização não carregou. Tente atualizar a página.");
-                    }
-
                     ImageTracer.imageToSVG(
                         imgOriginal.src,
                         function(svgstr) {
                             svgData = svgstr;
-                            
-                            // Atualiza interface
                             imgVectorPreview.classList.add('hidden');
                             watermark.classList.add('hidden');
                             vectorContainer.innerHTML = svgstr;
@@ -205,10 +202,10 @@
                             btnConfirmar.classList.add('hidden');
                             btnDownload.classList.remove('hidden');
                         },
-                        'posterized2' // Opção de qualidade mais rápida e estável
+                        'posterized2'
                     );
                 } catch (error) {
-                    alert("Erro ao processar: " + error.message);
+                    alert("Erro técnico: " + error.message);
                     btnConfirmar.innerText = "Já realizei o pagamento";
                     btnConfirmar.disabled = false;
                     btnConfirmar.classList.remove('opacity-50', 'cursor-not-allowed');
