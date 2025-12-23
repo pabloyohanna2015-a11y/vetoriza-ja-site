@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VetorizaJá – PNG e JPG para SVG com IA</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+        .loader { border-top-color: #2563eb; animation: spinner 1.5s linear infinite; }
+        @keyframes spinner { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        .hidden { display: none; }
+        
+        /* Mantém o tamanho dos containers fixos enquanto as logos crescem internamente */
+        .header-container { height: 110px; }
+        .footer-container { height: 160px; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900">
+
+    <!-- Header: Container com altura fixa e logo maximizada -->
+    <header class="w-full header-container px-8 flex justify-center md:justify-start items-center border-b border-slate-200 bg-white sticky top-0 z-50">
+        <img src="VetorizaJá.png" alt="VetorizaJá" class="h-28 w-auto cursor-pointer object-contain" onclick="window.location.reload()">
+    </header>
+
+    <main class="max-w-6xl mx-auto px-6 py-12">
+        
+        <!-- SEÇÃO 1: HERO E PREÇO -->
+        <section id="hero-section" class="text-center py-10">
+            <div class="inline-block bg-blue-100 text-blue-700 px-6 py-2 rounded-full text-sm font-bold mb-6 uppercase tracking-widest shadow-sm">
+                Vetorização Profissional por apenas R$ 9,90
+            </div>
+            <h1 class="text-5xl md:text-7xl font-black mb-6 tracking-tight text-slate-900 leading-tight">
+                Transforme imagens em <span class="text-blue-600">SVG</span> <br>com Inteligência Artificial
+            </h1>
+            <p class="text-lg md:text-xl text-slate-500 max-w-2xl mx-auto mb-12">
+                Converta seus arquivos PNG ou JPG em vetores de alta qualidade, prontos para qualquer tamanho.
+            </p>
+
+            <!-- Caixa de Upload -->
+            <div id="drop-zone" class="max-w-2xl mx-auto p-12 border-2 border-dashed border-slate-300 rounded-[40px] bg-white hover:border-blue-500 hover:bg-blue-50/30 transition-all cursor-pointer group relative shadow-xl shadow-slate-200/50">
+                <input type="file" id="file-input" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer" accept="image/png, image/jpeg">
+                <div class="flex flex-col items-center">
+                    <div class="w-20 h-20 bg-blue-600 text-white rounded-3xl flex items-center justify-center mb-6 shadow-lg shadow-blue-200 group-hover:scale-110 transition-transform">
+                        <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path></svg>
+                    </div>
+                    <span class="text-2xl font-bold text-slate-800">Clique ou arraste sua imagem</span>
+                    <span class="text-slate-400 mt-2">Formatos: .PNG e .JPG</span>
+                </div>
+            </div>
+
+            <!-- Explicação Técnica SVG -->
+            <div class="grid md:grid-cols-3 gap-8 mt-24 text-left">
+                <div class="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm">
+                    <div class="text-blue-600 font-black text-xl mb-3 italic">Por que usar SVG?</div>
+                    <p class="text-slate-500 text-sm leading-relaxed">Diferente de fotos comuns feitas de pixels, o **SVG é baseado em cálculos matemáticos**. Isso significa que você pode ampliar a imagem para o tamanho de um outdoor e ela **nunca perderá a nitidez** ou ficará "quadradinha".</p>
+                </div>
+                <div class="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm">
+                    <div class="text-blue-600 font-black text-xl mb-3 italic">Leveza e Velocidade</div>
+                    <p class="text-slate-500 text-sm leading-relaxed">Arquivos vetoriais são incrivelmente leves. Eles carregam instantaneamente em sites e aplicativos, economizando dados e melhorando a experiência do usuário final.</p>
+                </div>
+                <div class="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm">
+                    <div class="text-blue-600 font-black text-xl mb-3 italic">Totalmente Editável</div>
+                    <p class="text-slate-500 text-sm leading-relaxed">Ao converter para SVG, você ganha controle total. É possível alterar cores, espessuras de linhas e formas em qualquer software como Illustrator, Corel ou Canva.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Estado de Processamento -->
+        <section id="loading-section" class="hidden text-center py-32">
+            <div class="loader ease-linear rounded-full border-4 border-t-4 border-slate-200 h-20 w-20 mx-auto mb-8"></div>
+            <h2 class="text-3xl font-black text-slate-900">Vetorizando sua imagem...</h2>
+            <p class="text-slate-500 mt-3">Nossa IA está redesenhando cada detalhe em vetor.</p>
+        </section>
+
+        <!-- Preview e Pagamento -->
+        <section id="preview-section" class="hidden grid lg:grid-cols-12 gap-10 items-start">
+            
+            <div class="lg:col-span-7 space-y-8">
+                <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-100">
+                    <span class="text-xs font-bold uppercase text-slate-400 mb-4 block tracking-widest">Original (Pixels)</span>
+                    <div class="bg-slate-50 rounded-2xl p-4 flex items-center justify-center">
+                        <img id="img-original" src="" class="max-h-80" alt="Original">
+                    </div>
+                </div>
+                
+                <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-100 relative overflow-hidden">
+                    <span class="text-xs font-bold uppercase text-blue-600 mb-4 block tracking-widest">Resultado Vetorizado</span>
+                    <div class="relative bg-slate-50 rounded-2xl p-4 flex items-center justify-center overflow-hidden">
+                        <img id="img-vector-preview" src="" class="max-h-80 blur-lg transition-all duration-1000" alt="Vetorizado">
+                        <div id="watermark" class="absolute inset-0 flex items-center justify-center opacity-10 pointer-events-none select-none">
+                            <span class="text-5xl font-black transform -rotate-12">VETORIZAJÁ</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Checkout Pix -->
+            <div class="lg:col-span-5 bg-white p-10 rounded-[40px] shadow-2xl border border-slate-100 sticky top-24">
+                <h3 class="text-3xl font-black mb-2 text-slate-900">Libere seu arquivo</h3>
+                <p class="text-slate-500 mb-8">Pague via Pix para baixar o arquivo SVG original sem marca d'água.</p>
+                
+                <div class="bg-blue-600 text-white p-8 rounded-3xl mb-8 flex justify-between items-center shadow-xl shadow-blue-100">
+                    <span class="font-bold">Valor do Vetor</span>
+                    <span class="text-4xl font-black">R$ 9,90</span>
+                </div>
+
+                <div class="space-y-6 text-center">
+                    <div class="bg-white p-4 border-2 border-slate-100 rounded-3xl inline-block">
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=COLE_SUA_CHAVE_PIX_AQUI" class="w-48 h-48 mx-auto" alt="QR Code Pix">
+                    </div>
+                    
+                    <div class="space-y-2 text-left">
+                        <label class="text-xs font-bold text-slate-400 uppercase ml-1">Pix Copia e Cola</label>
+                        <div class="relative">
+                            <input type="text" id="pix-code" readonly value="SUA_CHAVE_PIX_OU_CODIGO_COPIA_E_COLA_AQUI" class="w-full bg-slate-50 border border-slate-200 rounded-2xl py-4 px-5 text-xs font-mono pr-24 focus:outline-none">
+                            <button onclick="copyPix()" class="absolute right-2 top-2 bg-white border border-slate-200 text-slate-700 px-4 py-2 rounded-xl text-xs font-bold hover:bg-slate-50 transition shadow-sm">Copiar</button>
+                        </div>
+                    </div>
+
+                    <div class="bg-amber-50 text-amber-700 p-4 rounded-2xl text-[11px] leading-relaxed text-left border border-amber-100 italic">
+                        <strong>Aviso:</strong> Após realizar o Pix, clique no botão abaixo para liberar o download do seu arquivo SVG profissional.
+                    </div>
+
+                    <button id="btn-confirmar" onclick="liberarVetor()" class="w-full bg-slate-900 text-white py-5 rounded-3xl font-black text-lg hover:bg-slate-800 transition-all shadow-xl">
+                        Já realizei o pagamento
+                    </button>
+
+                    <button id="btn-download" disabled class="hidden w-full bg-green-600 text-white py-5 rounded-3xl font-black text-lg shadow-xl shadow-green-200 flex items-center justify-center gap-3">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                        Baixar SVG Agora
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer: Container com altura fixa e logo maximizada -->
+    <footer class="max-w-6xl mx-auto px-6 footer-container border-t border-slate-200 mt-20 flex flex-col md:flex-row justify-between items-center gap-6 text-slate-400 text-sm">
+        <img src="VetorizaJá.png" alt="VetorizaJá" class="h-32 w-auto grayscale opacity-50 object-contain">
+        <p>&copy; 2025 VetorizaJá. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        const fileInput = document.getElementById('file-input');
+        const heroSection = document.getElementById('hero-section');
+        const loadingSection = document.getElementById('loading-section');
+        const previewSection = document.getElementById('preview-section');
+        const imgOriginal = document.getElementById('img-original');
+        const imgVector = document.getElementById('img-vector-preview');
+        const btnConfirmar = document.getElementById('btn-confirmar');
+        const btnDownload = document.getElementById('btn-download');
+        const watermark = document.getElementById('watermark');
+
+        fileInput.addEventListener('change', function(e) {
+            if (e.target.files && e.target.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    imgOriginal.src = event.target.result;
+                    imgVector.src = event.target.result; 
+                    iniciarIA();
+                };
+                reader.readAsDataURL(e.target.files[0]);
+            }
+        });
+
+        function iniciarIA() {
+            heroSection.classList.add('hidden');
+            loadingSection.classList.remove('hidden');
+            setTimeout(() => {
+                loadingSection.classList.add('hidden');
+                previewSection.classList.remove('hidden');
+            }, 2500);
+        }
+
+        function copyPix() {
+            const input = document.getElementById('pix-code');
+            input.select();
+            document.execCommand('copy');
+            alert('Código Pix copiado! Agora é só pagar no seu banco.');
+        }
+
+        function liberarVetor() {
+            imgVector.classList.remove('blur-lg');
+            watermark.classList.add('hidden');
+            btnConfirmar.classList.add('hidden');
+            btnDownload.classList.remove('hidden');
+            btnDownload.disabled = false;
+            
+            btnDownload.onclick = () => {
+                alert('O download do seu arquivo SVG foi iniciado!');
+            };
+        }
+    </script>
+</body>
+</html>
