@@ -10,17 +10,15 @@
     <meta name="keywords" content="vetorizar imagem, converter png para svg, vetorização online, transformar foto em vetor, svg profissional, vetorizajá">
     <meta name="author" content="VetorizaJá">
 
-    <!-- Favicon (Ícone da Aba) -->
+    <!-- Favicon -->
     <link rel="icon" type="image/png" href="VetorizaJá.png">
 
-    <!-- Redes Sociais (WhatsApp, Instagram, Facebook) -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://vetorizaja.netlify.app/">
-    <meta property="og:title" content="VetorizaJá – PNG para SVG com Inteligência Artificial">
-    <meta property="og:description" content="Transforme logos e ilustrações em vetores profissionais escaláveis em segundos por apenas R$ 9,90.">
-    <meta property="og:image" content="https://vetorizaja.netlify.app/VetorizaJá.png">
-
-    <!-- Google Analytics (GA4) - SUBSTITUA O G-XXXXXXXXXX PELO SEU ID REAL -->
+    <!-- Bibliotecas Externas -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/imagetracerjs/1.2.6/imagetracer_v1.2.6.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Google Analytics (GA4) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-N7MCHSTD1V"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -28,7 +26,6 @@
         gtag('js', new Date());
         gtag('config', 'G-XXXXXXXXXX');
 
-        // Função para rastrear cliques no botão de pagamento
         function trackPaymentClick() {
             gtag('event', 'click_confirmar_pagamento', {
                 'event_category': 'vendas',
@@ -39,9 +36,6 @@
         }
     </script>
 
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
-    
     <style>
         body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
         .loader { border-top-color: #2563eb; animation: spinner 1.5s linear infinite; }
@@ -53,26 +47,20 @@
 </head>
 <body class="bg-slate-50 text-slate-900">
 
-    <!-- Header: Altura fixa com logo maximizada -->
     <header class="w-full header-container px-8 flex justify-center md:justify-start items-center border-b border-slate-200 bg-white sticky top-0 z-50">
         <img src="VetorizaJá.png" alt="VetorizaJá" class="h-28 w-auto cursor-pointer object-contain" onclick="window.location.reload()">
     </header>
 
     <main class="max-w-6xl mx-auto px-6 py-12">
         
-        <!-- SEÇÃO 1: HERO E PREÇO -->
         <section id="hero-section" class="text-center py-10">
             <div class="inline-block bg-blue-100 text-blue-700 px-6 py-2 rounded-full text-sm font-bold mb-6 uppercase tracking-widest shadow-sm">
-                Vetorização Profissional por apenas `R$ 9,90`
+                Vetorização Profissional por apenas R$ 9,90
             </div>
             <h1 class="text-5xl md:text-7xl font-black mb-6 tracking-tight text-slate-900 leading-tight">
                 Transforme imagens em <span class="text-blue-600">SVG</span> <br>com Inteligência Artificial
             </h1>
-            <p class="text-lg md:text-xl text-slate-500 max-w-2xl mx-auto mb-12">
-                Converta seus arquivos PNG ou JPG em vetores de alta qualidade, prontos para qualquer tamanho.
-            </p>
-
-            <!-- Caixa de Upload -->
+            
             <div id="drop-zone" class="max-w-2xl mx-auto p-12 border-2 border-dashed border-slate-300 rounded-[40px] bg-white hover:border-blue-500 hover:bg-blue-50/30 transition-all cursor-pointer group relative shadow-xl shadow-slate-200/50">
                 <input type="file" id="file-input" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer" accept="image/png, image/jpeg">
                 <div class="flex flex-col items-center">
@@ -80,37 +68,16 @@
                         <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path></svg>
                     </div>
                     <span class="text-2xl font-bold text-slate-800">Clique ou arraste sua imagem</span>
-                    <span class="text-slate-400 mt-2">Formatos: .PNG e .JPG</span>
-                </div>
-            </div>
-
-            <!-- Explicação Técnica SVG -->
-            <div class="grid md:grid-cols-3 gap-8 mt-24 text-left">
-                <div class="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm">
-                    <div class="text-blue-600 font-black text-xl mb-3 italic">Por que usar SVG?</div>
-                    <p class="text-slate-500 text-sm leading-relaxed">Diferente de fotos comuns feitas de pixels, o **SVG é baseado em cálculos matemáticos**. Isso significa que você pode ampliar a imagem para o tamanho de um outdoor e ela **nunca perderá a nitidez**.</p>
-                </div>
-                <div class="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm">
-                    <div class="text-blue-600 font-black text-xl mb-3 italic">Leveza e Velocidade</div>
-                    <p class="text-slate-500 text-sm leading-relaxed">Arquivos vetoriais são incrivelmente leves. Eles carregam instantaneamente em sites e aplicativos, economizando dados e melhorando a experiência.</p>
-                </div>
-                <div class="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm">
-                    <div class="text-blue-600 font-black text-xl mb-3 italic">Totalmente Editável</div>
-                    <p class="text-slate-500 text-sm leading-relaxed">Ao converter para SVG, você ganha controle total. É possível alterar cores e formas em qualquer software como Illustrator, Corel ou Canva.</p>
                 </div>
             </div>
         </section>
 
-        <!-- Estado de Processamento -->
         <section id="loading-section" class="hidden text-center py-32">
             <div class="loader ease-linear rounded-full border-4 border-t-4 border-slate-200 h-20 w-20 mx-auto mb-8"></div>
             <h2 class="text-3xl font-black text-slate-900">Vetorizando sua imagem...</h2>
-            <p class="text-slate-500 mt-3">Nossa IA está redesenhando cada detalhe em vetor.</p>
         </section>
 
-        <!-- Preview e Pagamento -->
         <section id="preview-section" class="hidden grid lg:grid-cols-12 gap-10 items-start">
-            
             <div class="lg:col-span-7 space-y-8">
                 <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-100">
                     <span class="text-xs font-bold uppercase text-slate-400 mb-4 block tracking-widest">Original (Pixels)</span>
@@ -118,10 +85,9 @@
                         <img id="img-original" src="" class="max-h-80" alt="Original">
                     </div>
                 </div>
-                
                 <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-100 relative overflow-hidden">
                     <span class="text-xs font-bold uppercase text-blue-600 mb-4 block tracking-widest">Resultado Vetorizado</span>
-                    <div class="relative bg-slate-50 rounded-2xl p-4 flex items-center justify-center overflow-hidden">
+                    <div id="vector-container" class="relative bg-slate-50 rounded-2xl p-4 flex items-center justify-center overflow-hidden min-h-[300px]">
                         <img id="img-vector-preview" src="" class="max-h-80 blur-lg transition-all duration-1000" alt="Vetorizado">
                         <div id="watermark" class="absolute inset-0 flex items-center justify-center opacity-10 pointer-events-none select-none">
                             <span class="text-5xl font-black transform -rotate-12">VETORIZAJÁ</span>
@@ -130,18 +96,14 @@
                 </div>
             </div>
 
-            <!-- Checkout Pix Real -->
             <div class="lg:col-span-5 bg-white p-10 rounded-[40px] shadow-2xl border border-slate-100 sticky top-24">
                 <h3 class="text-3xl font-black mb-2 text-slate-900">Libere seu arquivo</h3>
-                <p class="text-slate-500 mb-8">Pague via Pix para baixar o arquivo SVG original sem marca d'água.</p>
-                
-                <div class="bg-blue-600 text-white p-8 rounded-3xl mb-8 flex justify-between items-center shadow-xl shadow-blue-100">
+                <div class="bg-blue-600 text-white p-8 rounded-3xl mb-8 flex justify-between items-center">
                     <span class="font-bold">Valor do Vetor</span>
-                    <span class="text-4xl font-black">`R$ 9,90`</span>
+                    <span class="text-4xl font-black">R$ 9,90</span>
                 </div>
 
                 <div class="space-y-6 text-center">
-                    <!-- QR Code Pix Real do Pablo -->
                     <div class="bg-white p-4 border-2 border-slate-100 rounded-3xl inline-block">
                         <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=00020126470014BR.GOV.BCB.PIX0125pablo.albieri@hotmail.com52040000530398654049.905802BR5920PABLO MURILO ALBIERI6009Cerquilho62070503***63049EE7" class="w-48 h-48 mx-auto" alt="QR Code Pix">
                     </div>
@@ -154,17 +116,11 @@
                         </div>
                     </div>
 
-                    <div class="bg-amber-50 text-amber-700 p-4 rounded-2xl text-[11px] leading-relaxed text-left border border-amber-100 italic">
-                        <strong>Aviso:</strong> Após realizar o Pix, clique no botão abaixo para liberar o download.
-                    </div>
-
-                    <!-- Botão com Rastreamento Analytics -->
                     <button id="btn-confirmar" onclick="liberarVetor(); trackPaymentClick();" class="w-full bg-slate-900 text-white py-5 rounded-3xl font-black text-lg hover:bg-slate-800 transition-all shadow-xl">
                         Já realizei o pagamento
                     </button>
 
-                    <button id="btn-download" disabled class="hidden w-full bg-green-600 text-white py-5 rounded-3xl font-black text-lg shadow-xl shadow-green-200 flex items-center justify-center gap-3">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                    <button id="btn-download" class="hidden w-full bg-green-600 text-white py-5 rounded-3xl font-black text-lg shadow-xl flex items-center justify-center gap-3">
                         Baixar SVG Agora
                     </button>
                 </div>
@@ -172,29 +128,30 @@
         </section>
     </main>
 
-    <!-- Footer: Altura fixa com logo maximizada -->
     <footer class="max-w-6xl mx-auto px-6 footer-container border-t border-slate-200 mt-20 flex flex-col md:flex-row justify-between items-center gap-6 text-slate-400 text-sm">
         <img src="VetorizaJá.png" alt="VetorizaJá" class="h-32 w-auto grayscale opacity-50 object-contain">
         <p>&copy; 2025 VetorizaJá. Todos os direitos reservados.</p>
     </footer>
 
     <script>
+        let svgData = ''; // Armazenará o código do vetor real
         const fileInput = document.getElementById('file-input');
         const heroSection = document.getElementById('hero-section');
         const loadingSection = document.getElementById('loading-section');
         const previewSection = document.getElementById('preview-section');
         const imgOriginal = document.getElementById('img-original');
-        const imgVector = document.getElementById('img-vector-preview');
+        const imgVectorPreview = document.getElementById('img-vector-preview');
         const btnConfirmar = document.getElementById('btn-confirmar');
         const btnDownload = document.getElementById('btn-download');
         const watermark = document.getElementById('watermark');
+        const vectorContainer = document.getElementById('vector-container');
 
         fileInput.addEventListener('change', function(e) {
             if (e.target.files && e.target.files[0]) {
                 const reader = new FileReader();
                 reader.onload = function(event) {
                     imgOriginal.src = event.target.result;
-                    imgVector.src = event.target.result; 
+                    imgVectorPreview.src = event.target.result;
                     iniciarIA();
                 };
                 reader.readAsDataURL(e.target.files[0]);
@@ -207,24 +164,57 @@
             setTimeout(() => {
                 loadingSection.classList.add('hidden');
                 previewSection.classList.remove('hidden');
-            }, 2500);
+            }, 2000);
         }
 
         function copyPix() {
             const input = document.getElementById('pix-code');
             input.select();
             document.execCommand('copy');
-            alert('Código Pix copiado! Agora é só pagar no seu banco.');
+            alert('Código Pix copiado!');
         }
 
         function liberarVetor() {
-            imgVector.classList.remove('blur-lg');
-            watermark.classList.add('hidden');
-            btnConfirmar.classList.add('hidden');
-            btnDownload.classList.remove('hidden');
-            btnDownload.disabled = false;
-            btnDownload.onclick = () => { alert('O download do seu arquivo SVG foi iniciado!'); };
+            // 1. Inicia a vetorização real usando ImageTracer
+            ImageTracer.imageToSVG(
+                imgOriginal.src,
+                function(svgstr) {
+                    svgData = svgstr; // Salva o SVG real
+                    
+                    // 2. Atualiza a interface
+                    imgVectorPreview.classList.add('hidden');
+                    watermark.classList.add('hidden');
+                    vectorContainer.innerHTML = svgstr; // Mostra o vetor real na tela
+                    
+                    // Ajusta o SVG para caber no container
+                    const svgElement = vectorContainer.querySelector('svg');
+                    svgElement.setAttribute('class', 'max-h-80 w-auto');
+                    
+                    btnConfirmar.classList.add('hidden');
+                    btnDownload.classList.remove('hidden');
+                },
+                'detailed' // Opção de qualidade
+            );
         }
+
+        btnDownload.onclick = function() {
+            if (!svgData) return;
+            
+            // Cria um arquivo Blob com o conteúdo do SVG
+            const blob = new Blob([svgData], { type: 'image/svg+xml' });
+            const url = window.URL.createObjectURL(blob);
+            
+            // Cria um link temporário para forçar o download
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'imagem-vetorizada-vetorizaja.svg';
+            document.body.appendChild(a);
+            a.click();
+            
+            // Limpa a memória
+            window.URL.revokeObjectURL(url);
+            document.body.removeChild(a);
+        };
     </script>
 </body>
 </html>
