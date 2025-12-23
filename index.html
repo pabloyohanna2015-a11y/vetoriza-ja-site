@@ -10,6 +10,9 @@
     <meta name="keywords" content="vetorizar imagem, converter png para svg, vetorização online, transformar foto em vetor, svg profissional, vetorizajá">
     <meta name="author" content="VetorizaJá">
 
+    <!-- Favicon (Ícone da Aba do Navegador) -->
+    <link rel="icon" type="image/png" href="VetorizaJá.png">
+
     <!-- Redes Sociais (WhatsApp, Instagram, Facebook) -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://vetorizaja.netlify.app/">
@@ -30,13 +33,15 @@
         .loader { border-top-color: #2563eb; animation: spinner 1.5s linear infinite; }
         @keyframes spinner { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
         .hidden { display: none; }
+        
+        /* Mantém o tamanho dos containers fixos enquanto as logos crescem internamente */
         .header-container { height: 110px; }
         .footer-container { height: 160px; }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-900">
 
-    <!-- Header -->
+    <!-- Header: Container com altura fixa e logo maximizada -->
     <header class="w-full header-container px-8 flex justify-center md:justify-start items-center border-b border-slate-200 bg-white sticky top-0 z-50">
         <img src="VetorizaJá.png" alt="VetorizaJá" class="h-28 w-auto cursor-pointer object-contain" onclick="window.location.reload()">
     </header>
@@ -93,6 +98,7 @@
 
         <!-- Preview e Pagamento -->
         <section id="preview-section" class="hidden grid lg:grid-cols-12 gap-10 items-start">
+            
             <div class="lg:col-span-7 space-y-8">
                 <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-100">
                     <span class="text-xs font-bold uppercase text-slate-400 mb-4 block tracking-widest">Original (Pixels)</span>
@@ -100,6 +106,7 @@
                         <img id="img-original" src="" class="max-h-80" alt="Original">
                     </div>
                 </div>
+                
                 <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-100 relative overflow-hidden">
                     <span class="text-xs font-bold uppercase text-blue-600 mb-4 block tracking-widest">Resultado Vetorizado</span>
                     <div class="relative bg-slate-50 rounded-2xl p-4 flex items-center justify-center overflow-hidden">
@@ -122,6 +129,7 @@
                 </div>
 
                 <div class="space-y-6 text-center">
+                    <!-- QR Code Pix Real -->
                     <div class="bg-white p-4 border-2 border-slate-100 rounded-3xl inline-block">
                         <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=00020126470014BR.GOV.BCB.PIX0125pablo.albieri@hotmail.com52040000530398654049.905802BR5920PABLO MURILO ALBIERI6009Cerquilho62070503***63049EE7" class="w-48 h-48 mx-auto" alt="QR Code Pix">
                     </div>
@@ -151,6 +159,7 @@
         </section>
     </main>
 
+    <!-- Footer: Container com altura fixa e logo maximizada -->
     <footer class="max-w-6xl mx-auto px-6 footer-container border-t border-slate-200 mt-20 flex flex-col md:flex-row justify-between items-center gap-6 text-slate-400 text-sm">
         <img src="VetorizaJá.png" alt="VetorizaJá" class="h-32 w-auto grayscale opacity-50 object-contain">
         <p>&copy; 2025 VetorizaJá. Todos os direitos reservados.</p>
