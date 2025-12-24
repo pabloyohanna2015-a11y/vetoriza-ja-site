@@ -3,230 +3,96 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- SEO Principal -->
-    <title>VetorizaJá – PNG e JPG para SVG com IA</title>
-    <meta name="description" content="Vetorize imagens PNG e JPG para SVG online com alta precisão usando IA. Converta logos e ilustrações em vetores infinitamente escaláveis por apenas R$ 9,90.">
-    <meta name="keywords" content="vetorizar imagem, converter png para svg, vetorização online, transformar foto em vetor, svg profissional, vetorizajá">
-    <meta name="author" content="VetorizaJá">
-
-    <!-- Favicon -->
+    <title>VetorizaJá – PNG para SVG com IA</title>
     <link rel="icon" type="image/png" href="VetorizaJá.png">
-
-    <!-- Redes Sociais (WhatsApp, Instagram, Facebook) -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://vetorizaja.com/">
-    <meta property="og:title" content="VetorizaJá – PNG para SVG com Inteligência Artificial">
-    <meta property="og:description" content="Transforme logos e ilustrações em vetores profissionais escaláveis em segundos por apenas R$ 9,90.">
-    <meta property="og:image" content="https://vetorizaja.com/VetorizaJá.png">
-
-    <!-- Google Analytics (GA4) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-N7MCHSTD1V"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
         gtag('config', 'G-N7MCHSTD1V');
-
-        function trackPaymentClick() {
-            gtag('event', 'click_confirmar_pagamento', {
-                'event_category': 'vendas',
-                'event_label': 'Botão Já Realizei o Pagamento',
-                'value': 9.90,
-                'currency': 'BRL'
-            });
-        }
     </script>
-
-    <!-- Bibliotecas Externas -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/imagetracerjs@1.2.6/imagetracer_v1.2.6.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
-    
     <style>
-        body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; }
+        .hidden { display: none; }
         .loader { border-top-color: #2563eb; animation: spinner 1.5s linear infinite; }
         @keyframes spinner { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-        .hidden { display: none; }
-        .header-container { height: 110px; }
-        
-        /* Botão WhatsApp Flutuante */
-        .whatsapp-float {
-            position: fixed;
-            width: 60px;
-            height: 60px;
-            bottom: 40px;
-            right: 40px;
-            background-color: #25d366;
-            color: #FFF;
-            border-radius: 50px;
-            text-align: center;
-            font-size: 30px;
-            box-shadow: 2px 2px 3px #999;
-            z-index: 100;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-        }
-        .whatsapp-float:hover { transform: scale(1.1); background-color: #128c7e; }
-
-        /* Modal de Termos */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.6);
-            backdrop-filter: blur(5px);
-        }
-        .modal-content {
-            background-color: #fff;
-            margin: 10% auto;
-            padding: 40px;
-            border-radius: 30px;
-            width: 90%;
-            max-width: 600px;
-            max-height: 80vh;
-            overflow-y: auto;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-        }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-900">
 
-    <!-- Header -->
-    <header class="w-full header-container px-8 flex justify-center md:justify-start items-center border-b border-slate-200 bg-white sticky top-0 z-50">
-        <img src="VetorizaJá.png" alt="VetorizaJá" class="h-28 w-auto cursor-pointer object-contain" onclick="window.location.reload()">
+    <header class="w-full h-28 px-8 flex justify-center md:justify-start items-center border-b border-slate-200 bg-white sticky top-0 z-50">
+        <img src="VetorizaJá.png" alt="VetorizaJá" class="h-24 w-auto cursor-pointer object-contain" onclick="window.location.reload()">
     </header>
 
     <main class="max-w-6xl mx-auto px-6 py-12">
-        
-        <!-- Hero Section -->
         <section id="hero-section" class="text-center py-10">
-            <div class="inline-block bg-blue-100 text-blue-700 px-6 py-2 rounded-full text-sm font-bold mb-6 uppercase tracking-widest shadow-sm">
-                Vetorização Profissional por apenas R$ 9,90
-            </div>
-            <h1 class="text-5xl md:text-7xl font-black mb-6 tracking-tight text-slate-900 leading-tight">
-                Transforme imagens em <span class="text-blue-600">SVG</span> <br>com Inteligência Artificial
-            </h1>
-            
-            <div id="drop-zone" class="max-w-2xl mx-auto p-12 border-2 border-dashed border-slate-300 rounded-[40px] bg-white hover:border-blue-500 hover:bg-blue-50/30 transition-all cursor-pointer relative shadow-xl shadow-slate-200/50">
+            <h1 class="text-5xl font-black mb-6 tracking-tight">Vetorize com <span class="text-blue-600">IA</span></h1>
+            <div id="drop-zone" class="max-w-2xl mx-auto p-12 border-2 border-dashed border-slate-300 rounded-[40px] bg-white cursor-pointer relative shadow-xl">
                 <input type="file" id="file-input" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer" accept="image/png, image/jpeg">
                 <div class="flex flex-col items-center">
-                    <div class="w-20 h-20 bg-blue-600 text-white rounded-3xl flex items-center justify-center mb-6 shadow-lg shadow-blue-200">
-                        <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path></svg>
-                    </div>
-                    <span class="text-2xl font-bold text-slate-800">Clique ou arraste sua imagem</span>
-                    <span class="text-slate-400 mt-2">Formatos: .PNG e .JPG</span>
+                    <span class="text-2xl font-bold text-slate-800">Arraste sua imagem aqui</span>
                 </div>
             </div>
         </section>
 
-        <!-- Preview e Pagamento -->
-        <section id="preview-section" class="hidden grid lg:grid-cols-12 gap-10 items-start">
+        <section id="preview-section" class="hidden grid lg:grid-cols-12 gap-10">
             <div class="lg:col-span-7 space-y-8">
-                <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-100">
-                    <span class="text-xs font-bold uppercase text-slate-400 mb-4 block tracking-widest">Original (Pixels)</span>
-                    <div class="bg-slate-50 rounded-2xl p-4 flex items-center justify-center">
-                        <img id="img-original" src="" class="max-h-80" alt="Original">
-                    </div>
-                </div>
-                <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-100 relative overflow-hidden">
-                    <span class="text-xs font-bold uppercase text-blue-600 mb-4 block tracking-widest">Resultado Vetorizado</span>
-                    <div id="vector-container" class="relative bg-slate-50 rounded-2xl p-4 flex items-center justify-center overflow-hidden min-h-[300px]">
-                        <img id="img-vector-preview" src="" class="max-h-80 blur-lg transition-all duration-1000" alt="Vetorizado">
-                        <div id="watermark" class="absolute inset-0 flex items-center justify-center opacity-10 pointer-events-none">
-                            <span class="text-5xl font-black transform -rotate-12">VETORIZAJÁ</span>
-                        </div>
+                <div class="bg-white p-6 rounded-3xl border border-slate-100">
+                    <span class="text-xs font-bold text-slate-400 uppercase">Resultado Vetorizado</span>
+                    <div id="vector-container" class="relative bg-slate-50 rounded-2xl p-4 flex items-center justify-center min-h-[300px]">
+                        <img id="img-vector-preview" src="" class="max-h-80 blur-lg" alt="Vetorizado">
                     </div>
                 </div>
             </div>
 
-            <!-- Checkout Pix -->
-            <div class="lg:col-span-5 bg-white p-10 rounded-[40px] shadow-2xl border border-slate-100 sticky top-24">
-                <h3 class="text-3xl font-black mb-2 text-slate-900">Libere seu arquivo</h3>
-                <div class="bg-blue-600 text-white p-8 rounded-3xl mb-8 flex justify-between items-center shadow-xl">
-                    <span class="font-bold">Valor do Vetor</span>
-                    <span class="text-4xl font-black">R$ 9,90</span>
-                </div>
-
-                <div class="space-y-6 text-center">
-                    <div class="bg-white p-4 border-2 border-slate-100 rounded-3xl inline-block">
-                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=00020126470014BR.GOV.BCB.PIX0125pablo.albieri@hotmail.com52040000530398654049.905802BR5920PABLO MURILO ALBIERI6009Cerquilho62070503***63049EE7" class="w-48 h-48 mx-auto" alt="QR Code Pix">
+            <div class="lg:col-span-5 bg-white p-10 rounded-[40px] shadow-2xl border border-slate-100">
+                <h3 class="text-3xl font-black mb-2">Pagamento Pix</h3>
+                <div id="payment-box">
+                    <div class="bg-blue-600 text-white p-6 rounded-3xl mb-6 flex justify-between items-center">
+                        <span class="font-bold">Valor</span>
+                        <span class="text-3xl font-black">R$ 9,90</span>
                     </div>
-                    
-                    <div class="space-y-2 text-left">
-                        <label class="text-xs font-bold text-slate-400 uppercase ml-1">Pix Copia e Cola</label>
-                        <div class="relative">
-                            <input type="text" id="pix-code" readonly value="00020126470014BR.GOV.BCB.PIX0125pablo.albieri@hotmail.com52040000530398654049.905802BR5920PABLO MURILO ALBIERI6009Cerquilho62070503***63049EE7" class="w-full bg-slate-50 border border-slate-200 rounded-2xl py-4 px-5 text-xs font-mono pr-24 focus:outline-none">
-                            <button onclick="copyPix()" class="absolute right-2 top-2 bg-white border border-slate-200 text-slate-700 px-4 py-2 rounded-xl text-xs font-bold hover:bg-slate-50 transition shadow-sm">Copiar</button>
-                        </div>
-                    </div>
-
-                    <button id="btn-confirmar" onclick="liberarVetor(); trackPaymentClick();" class="w-full bg-slate-900 text-white py-5 rounded-3xl font-black text-lg hover:bg-slate-800 transition-all shadow-xl">
-                        Já realizei o pagamento
-                    </button>
-
-                    <button id="btn-download" class="hidden w-full bg-green-600 text-white py-5 rounded-3xl font-black text-lg shadow-xl flex items-center justify-center gap-3">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
-                        Baixar SVG Agora
+                    <button id="btn-gerar-pix" onclick="gerarPix();" class="w-full bg-slate-900 text-white py-5 rounded-3xl font-black text-lg hover:bg-slate-800 transition-all">
+                        Gerar QR Code Pix
                     </button>
                 </div>
+
+                <div id="pix-display" class="hidden space-y-6 text-center">
+                    <div class="bg-white p-4 border-2 border-blue-100 rounded-3xl inline-block">
+                        <img id="qr-code-img" src="" class="w-48 h-48 mx-auto" alt="QR Code Pix">
+                    </div>
+                    <p class="text-sm font-bold text-blue-600 animate-pulse">Aguardando pagamento...</p>
+                    <button onclick="copyPix()" class="text-xs font-bold text-slate-500 underline">Copiar Código Pix</button>
+                </div>
+
+                <button id="btn-download" class="hidden w-full bg-green-600 text-white py-5 rounded-3xl font-black text-lg shadow-xl flex items-center justify-center gap-3">
+                    Baixar SVG Agora
+                </button>
             </div>
         </section>
     </main>
 
-    <!-- Botão WhatsApp Flutuante -->
-    <a href="https://wa.me/5515996820582" class="whatsapp-float" target="_blank">
-        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.72.937 3.672 1.433 5.66 1.433h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
-    </a>
-
-    <!-- Modal Termos de Uso -->
-    <div id="termsModal" class="modal">
-        <div class="modal-content">
-            <h2 class="text-2xl font-black mb-4">Termos de Uso</h2>
-            <div class="text-sm text-slate-600 space-y-4">
-                <p>1. <strong>Serviço:</strong> O VetorizaJá é uma ferramenta de conversão de imagens baseada em processamento local via navegador.</p>
-                <p>2. <strong>Pagamento:</strong> O valor de R$ 9,90 libera o download de um único arquivo vetorizado.</p>
-                <p>3. <strong>Produto Digital:</strong> Por ser um produto digital entregue no ato, não há estornos após a liberação do download.</p>
-                <p>4. <strong>Suporte:</strong> Em caso de falhas, utilize o botão de WhatsApp flutuante no site.</p>
-            </div>
-            <button onclick="closeTerms()" class="mt-8 w-full bg-slate-900 text-white py-3 rounded-2xl font-bold">Entendi</button>
-        </div>
-    </div>
-
-    <footer class="max-w-6xl mx-auto px-6 border-t border-slate-200 mt-20 flex flex-col md:flex-row justify-between items-center gap-6 text-slate-400 text-sm py-10">
-        <img src="VetorizaJá.png" alt="VetorizaJá" class="h-20 w-auto grayscale opacity-50 object-contain">
-        <div class="flex gap-4">
-            <a href="javascript:void(0)" onclick="openTerms()" class="hover:text-slate-600 underline">Termos de Uso</a>
-            <p>&copy; 2025 VetorizaJá.com</p>
-        </div>
-    </footer>
-
     <script>
         let svgData = '';
+        let paymentId = null;
+        let pixCopiaECola = '';
+
         const fileInput = document.getElementById('file-input');
         const heroSection = document.getElementById('hero-section');
         const previewSection = document.getElementById('preview-section');
         const imgOriginal = document.getElementById('img-original');
         const imgVectorPreview = document.getElementById('img-vector-preview');
-        const btnConfirmar = document.getElementById('btn-confirmar');
         const btnDownload = document.getElementById('btn-download');
-        const watermark = document.getElementById('watermark');
         const vectorContainer = document.getElementById('vector-container');
-
-        function openTerms() { document.getElementById('termsModal').style.display = "block"; }
-        function closeTerms() { document.getElementById('termsModal').style.display = "none"; }
 
         fileInput.addEventListener('change', function(e) {
             if (e.target.files && e.target.files[0]) {
                 const reader = new FileReader();
                 reader.onload = function(event) {
-                    imgOriginal.src = event.target.result;
                     imgVectorPreview.src = event.target.result;
                     heroSection.classList.add('hidden');
                     previewSection.classList.remove('hidden');
@@ -235,39 +101,55 @@
             }
         });
 
-        function copyPix() {
-            const input = document.getElementById('pix-code');
-            input.select();
-            document.execCommand('copy');
-            alert('Código Pix copiado!');
+        async function gerarPix() {
+            document.getElementById('btn-gerar-pix').innerText = "Gerando...";
+            try {
+                const response = await fetch('/api/create-pix');
+                const data = await response.json();
+                paymentId = data.id;
+                pixCopiaECola = data.qr_code;
+                document.getElementById('qr-code-img').src = `data:image/jpeg;base64,${data.qr_code_base64}`;
+                document.getElementById('payment-box').classList.add('hidden');
+                document.getElementById('pix-display').classList.remove('hidden');
+                
+                // Inicia a verificação automática
+                verificarPagamento();
+            } catch (e) {
+                alert("Erro ao gerar Pix. Tente novamente.");
+            }
         }
 
-        function liberarVetor() {
-            if (typeof ImageTracer === 'undefined') {
-                alert("O motor ainda está carregando. Aguarde 5 segundos.");
-                return;
-            }
-            btnConfirmar.innerText = "Processando Vetor...";
-            btnConfirmar.disabled = true;
+        function copyPix() {
+            navigator.clipboard.writeText(pixCopiaECola);
+            alert("Código Pix copiado!");
+        }
 
-            setTimeout(() => {
+        async function verificarPagamento() {
+            const interval = setInterval(async () => {
                 try {
-                    ImageTracer.imageToSVG(imgOriginal.src, function(svgstr) {
-                        svgData = svgstr;
-                        imgVectorPreview.classList.add('hidden');
-                        watermark.classList.add('hidden');
-                        vectorContainer.innerHTML = svgstr;
-                        const svgElement = vectorContainer.querySelector('svg');
-                        if(svgElement) svgElement.setAttribute('class', 'max-h-80 w-auto');
-                        btnConfirmar.classList.add('hidden');
-                        btnDownload.classList.remove('hidden');
-                    }, 'posterized2');
+                    const response = await fetch(`/api/check-payment?id=${paymentId}`);
+                    const data = await response.json();
+
+                    if (data.status === 'approved') {
+                        clearInterval(interval);
+                        liberarDownload();
+                    }
                 } catch (e) {
-                    alert("Erro técnico. Tente novamente.");
-                    btnConfirmar.disabled = false;
-                    btnConfirmar.innerText = "Já realizei o pagamento";
+                    console.error("Erro ao verificar status");
                 }
-            }, 100);
+            }, 3000); // Verifica a cada 3 segundos
+        }
+
+        function liberarDownload() {
+            document.getElementById('pix-display').innerHTML = "<p class='text-green-600 font-bold'>Pagamento Confirmado!</p>";
+            ImageTracer.imageToSVG(imgVectorPreview.src, function(svgstr) {
+                svgData = svgstr;
+                imgVectorPreview.classList.add('hidden');
+                vectorContainer.innerHTML = svgstr;
+                const svgElement = vectorContainer.querySelector('svg');
+                if(svgElement) svgElement.setAttribute('class', 'max-h-80 w-auto');
+                btnDownload.classList.remove('hidden');
+            }, 'posterized2');
         }
 
         btnDownload.onclick = function() {
@@ -276,10 +158,7 @@
             const a = document.createElement('a');
             a.href = url;
             a.download = 'vetor-vetorizaja.svg';
-            document.body.appendChild(a);
             a.click();
-            window.URL.revokeObjectURL(url);
-            document.body.removeChild(a);
         };
     </script>
 </body>
