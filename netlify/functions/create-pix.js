@@ -1,7 +1,6 @@
 const fetch = require('node-fetch');
 
 exports.handler = async (event) => {
-    // Pega o token que você salvou no cofre do Netlify
     const token = process.env.MP_ACCESS_TOKEN;
 
     const paymentData = {
@@ -9,7 +8,7 @@ exports.handler = async (event) => {
         description: 'Vetorização Profissional - VetorizaJá',
         payment_method_id: 'pix',
         payer: {
-            email: 'comprador@vetorizaja.com', // E-mail fixo para teste
+            email: 'comprador@vetorizaja.com',
             first_name: 'Cliente',
             last_name: 'VetorizaJá'
         }
