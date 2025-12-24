@@ -6,16 +6,20 @@
     
     <!-- SEO Principal -->
     <title>VetorizaJá – PNG e JPG para SVG com IA</title>
-    <meta name="description" content="Vetorize imagens PNG e JPG para SVG online com alta precisão usando IA.">
-    
+    <meta name="description" content="Vetorize imagens PNG e JPG para SVG online com alta precisão usando IA. Converta logos e ilustrações em vetores infinitamente escaláveis por apenas R$ 9,90.">
+    <meta name="keywords" content="vetorizar imagem, converter png para svg, vetorização online, transformar foto em vetor, svg profissional, vetorizajá">
+    <meta name="author" content="VetorizaJá">
+
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="VetorizaJá.png">
 
-    <!-- Bibliotecas Externas -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/imagetracerjs@1.2.6/imagetracer_v1.2.6.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
-    
+    <!-- Redes Sociais (WhatsApp, Instagram, Facebook) -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://vetorizaja.com/">
+    <meta property="og:title" content="VetorizaJá – PNG para SVG com Inteligência Artificial">
+    <meta property="og:description" content="Transforme logos e ilustrações em vetores profissionais escaláveis em segundos por apenas R$ 9,90.">
+    <meta property="og:image" content="https://vetorizaja.com/VetorizaJá.png">
+
     <!-- Google Analytics (GA4) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-N7MCHSTD1V"></script>
     <script>
@@ -34,6 +38,11 @@
         }
     </script>
 
+    <!-- Bibliotecas Externas -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/imagetracerjs@1.2.6/imagetracer_v1.2.6.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    
     <style>
         body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
         .loader { border-top-color: #2563eb; animation: spinner 1.5s linear infinite; }
@@ -41,7 +50,7 @@
         .hidden { display: none; }
         .header-container { height: 110px; }
         
-        /* Estilo do Botão WhatsApp */
+        /* Botão WhatsApp Flutuante */
         .whatsapp-float {
             position: fixed;
             width: 60px;
@@ -71,42 +80,48 @@
             top: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0,0,0,0.5);
+            background-color: rgba(0,0,0,0.6);
+            backdrop-filter: blur(5px);
         }
         .modal-content {
-            background-color: #fefefe;
+            background-color: #fff;
             margin: 10% auto;
             padding: 40px;
             border-radius: 30px;
-            width: 80%;
+            width: 90%;
             max-width: 600px;
-            max-height: 70vh;
+            max-height: 80vh;
             overflow-y: auto;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
         }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-900">
 
+    <!-- Header -->
     <header class="w-full header-container px-8 flex justify-center md:justify-start items-center border-b border-slate-200 bg-white sticky top-0 z-50">
         <img src="VetorizaJá.png" alt="VetorizaJá" class="h-28 w-auto cursor-pointer object-contain" onclick="window.location.reload()">
     </header>
 
     <main class="max-w-6xl mx-auto px-6 py-12">
+        
+        <!-- Hero Section -->
         <section id="hero-section" class="text-center py-10">
             <div class="inline-block bg-blue-100 text-blue-700 px-6 py-2 rounded-full text-sm font-bold mb-6 uppercase tracking-widest shadow-sm">
                 Vetorização Profissional por apenas R$ 9,90
             </div>
             <h1 class="text-5xl md:text-7xl font-black mb-6 tracking-tight text-slate-900 leading-tight">
-                Transforme imagens em <span class="text-blue-600">SVG</span>
+                Transforme imagens em <span class="text-blue-600">SVG</span> <br>com Inteligência Artificial
             </h1>
             
-            <div id="drop-zone" class="max-w-2xl mx-auto p-12 border-2 border-dashed border-slate-300 rounded-[40px] bg-white hover:border-blue-500 hover:bg-blue-50/30 transition-all cursor-pointer relative shadow-xl">
+            <div id="drop-zone" class="max-w-2xl mx-auto p-12 border-2 border-dashed border-slate-300 rounded-[40px] bg-white hover:border-blue-500 hover:bg-blue-50/30 transition-all cursor-pointer relative shadow-xl shadow-slate-200/50">
                 <input type="file" id="file-input" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer" accept="image/png, image/jpeg">
                 <div class="flex flex-col items-center">
-                    <div class="w-20 h-20 bg-blue-600 text-white rounded-3xl flex items-center justify-center mb-6">
+                    <div class="w-20 h-20 bg-blue-600 text-white rounded-3xl flex items-center justify-center mb-6 shadow-lg shadow-blue-200">
                         <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path></svg>
                     </div>
                     <span class="text-2xl font-bold text-slate-800">Clique ou arraste sua imagem</span>
+                    <span class="text-slate-400 mt-2">Formatos: .PNG e .JPG</span>
                 </div>
             </div>
         </section>
@@ -131,9 +146,10 @@
                 </div>
             </div>
 
+            <!-- Checkout Pix -->
             <div class="lg:col-span-5 bg-white p-10 rounded-[40px] shadow-2xl border border-slate-100 sticky top-24">
                 <h3 class="text-3xl font-black mb-2 text-slate-900">Libere seu arquivo</h3>
-                <div class="bg-blue-600 text-white p-8 rounded-3xl mb-8 flex justify-between items-center">
+                <div class="bg-blue-600 text-white p-8 rounded-3xl mb-8 flex justify-between items-center shadow-xl">
                     <span class="font-bold">Valor do Vetor</span>
                     <span class="text-4xl font-black">R$ 9,90</span>
                 </div>
@@ -156,6 +172,7 @@
                     </button>
 
                     <button id="btn-download" class="hidden w-full bg-green-600 text-white py-5 rounded-3xl font-black text-lg shadow-xl flex items-center justify-center gap-3">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
                         Baixar SVG Agora
                     </button>
                 </div>
@@ -163,7 +180,7 @@
         </section>
     </main>
 
-    <!-- Botão WhatsApp -->
+    <!-- Botão WhatsApp Flutuante -->
     <a href="https://wa.me/5515996820582" class="whatsapp-float" target="_blank">
         <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.72.937 3.672 1.433 5.66 1.433h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
     </a>
@@ -173,11 +190,10 @@
         <div class="modal-content">
             <h2 class="text-2xl font-black mb-4">Termos de Uso</h2>
             <div class="text-sm text-slate-600 space-y-4">
-                <p>1. <strong>Serviço:</strong> O VetorizaJá é uma ferramenta de conversão de imagens (PNG/JPG) para vetores (SVG) baseada em processamento local.</p>
-                <p>2. <strong>Pagamento:</strong> O valor de R$ 9,90 refere-se à liberação do download de um único arquivo vetorizado.</p>
-                <p>3. <strong>Produto Digital:</strong> Por se tratar de um produto digital entregue instantaneamente, não realizamos estornos após o download do arquivo.</p>
-                <p>4. <strong>Qualidade:</strong> A qualidade do vetor depende diretamente da resolução da imagem original enviada pelo usuário.</p>
-                <p>5. <strong>Suporte:</strong> Em caso de falha técnica, entre em contato via WhatsApp pelo botão flutuante no site.</p>
+                <p>1. <strong>Serviço:</strong> O VetorizaJá é uma ferramenta de conversão de imagens baseada em processamento local via navegador.</p>
+                <p>2. <strong>Pagamento:</strong> O valor de R$ 9,90 libera o download de um único arquivo vetorizado.</p>
+                <p>3. <strong>Produto Digital:</strong> Por ser um produto digital entregue no ato, não há estornos após a liberação do download.</p>
+                <p>4. <strong>Suporte:</strong> Em caso de falhas, utilize o botão de WhatsApp flutuante no site.</p>
             </div>
             <button onclick="closeTerms()" class="mt-8 w-full bg-slate-900 text-white py-3 rounded-2xl font-bold">Entendi</button>
         </div>
@@ -187,7 +203,7 @@
         <img src="VetorizaJá.png" alt="VetorizaJá" class="h-20 w-auto grayscale opacity-50 object-contain">
         <div class="flex gap-4">
             <a href="javascript:void(0)" onclick="openTerms()" class="hover:text-slate-600 underline">Termos de Uso</a>
-            <p>&copy; 2025 VetorizaJá.</p>
+            <p>&copy; 2025 VetorizaJá.com</p>
         </div>
     </footer>
 
@@ -203,7 +219,6 @@
         const watermark = document.getElementById('watermark');
         const vectorContainer = document.getElementById('vector-container');
 
-        // Funções do Modal
         function openTerms() { document.getElementById('termsModal').style.display = "block"; }
         function closeTerms() { document.getElementById('termsModal').style.display = "none"; }
 
@@ -232,7 +247,7 @@
                 alert("O motor ainda está carregando. Aguarde 5 segundos.");
                 return;
             }
-            btnConfirmar.innerText = "Processando...";
+            btnConfirmar.innerText = "Processando Vetor...";
             btnConfirmar.disabled = true;
 
             setTimeout(() => {
@@ -250,6 +265,7 @@
                 } catch (e) {
                     alert("Erro técnico. Tente novamente.");
                     btnConfirmar.disabled = false;
+                    btnConfirmar.innerText = "Já realizei o pagamento";
                 }
             }, 100);
         }
